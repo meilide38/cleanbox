@@ -1,0 +1,58 @@
+plugins {
+    id 'com.android.application'
+}
+
+def ksPath = System.getenv("SIGN_KEY_STORE")
+def hasReleaseKey = ksPath != null && new File(ksPath).exists()
+
+android {
+    namespace 'com.cleanbox.app'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.cleanbox.app"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    if (hasReleaseKey) {
+        signingConfigs {
+            release {
+                storeFile file(ksPath)
+                storePassword System.getenv("SIGN_STORE_PASSWORD")
+                keyAlias System.getenv("SIGN_KEY_ALIAS")
+                keyPassword System.getenv("SIGN_KEY_PASSWORD")
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            if (hasReleaseKey) {
+                signingConfig signingConfigs.release
+            } else {
+                signingConfig signingConfigs.debug
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'com.google.android.material:material:1.11.0'
+}

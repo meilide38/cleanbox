@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">简净清理</string>
+    <string name="title_large">大文件</string>
+    <string name="title_package">安装包</string>
+    <string name="title_empty">空文件夹</string>
+    <string name="title_duplicate">重复文件</string>
+    <string name="title_media">媒体文件</string>
+    <string name="title_apps">应用管理</string>
+
+    <string name="desc_large">超过 50MB 的单个文件</string>
+    <string name="desc_package">已下载的 apk 安装包</string>
+    <string name="desc_empty">不包含任何内容的目录</string>
+    <string name="desc_duplicate">内容相同的冗余副本</string>
+    <string name="desc_media">图片、视频与音频，按体积排序</string>
+    <string name="desc_apps">查看应用占用，跳转系统清理缓存</string>
+
+    <string name="select_all">全选</string>
+    <string name="delete_selected">删除</string>
+    <string name="scanning">正在扫描…</string>
+    <string name="nothing_found">没有找到符合条件的项目</string>
+</resources>
